@@ -25,3 +25,10 @@ Feature: validate CRUD functionality
       | q            | response_code   | error_code    | error_message                |
       |"0"           | 400             | "1006"        | "No matching location found."|
       | ""           | 400             | "1003"        | "Parameter q is missing."    |
+
+  Scenario Outline: schema Validation
+    When I want to get weather details for location <q>
+    Then the api response should match the weather response schema
+    Examples:
+      | q     |
+      |"SM1"  |
